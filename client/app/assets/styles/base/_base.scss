@@ -1,0 +1,16 @@
+// base element styles
+
+body {
+	p {
+		font-family: $font-body;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		font-family: $font-head;
+	}
+
+	section {
+		padding: 100px 0;
+	}
+
+}

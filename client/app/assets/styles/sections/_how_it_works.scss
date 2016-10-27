@@ -1,0 +1,28 @@
+section.how-it-works {
+	background-color: $black;
+	text-align: center;
+
+	h1 {
+		color: white;
+		margin-bottom: 40px;
+	}
+
+	.blurb {
+		padding: 1%;
+		.inner {
+			background-color: white;
+			border-radius: 3px;
+			padding: 5%;
+			height: 300px;
+
+			i {
+				margin: 25px;
+			}
+
+			h2 {
+				font-family: $font-body;
+				font-weight: 300;
+			}
+		}
+	}
+}

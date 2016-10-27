@@ -1,0 +1,26 @@
+section.testemonials {
+	text-align: center;
+	background-color: $grey;
+
+	h1 {
+		margin-bottom: 60px;
+	}
+
+	.col {
+		img {
+			width: 200px;
+			height: 200px;
+			border-radius: 50%;
+			border: 1px solid $darkGrey;
+			margin-bottom: 20px;
+		}
+		p {
+			color: $darkGrey;
+			width: 80%;
+			margin: 10px auto;
+			line-height: 1.7;
+			font-weight: $light;
+			font-size: 16px;
+		}
+	}
+}

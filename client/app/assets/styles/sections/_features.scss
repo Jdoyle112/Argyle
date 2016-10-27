@@ -1,0 +1,38 @@
+section.features {
+	text-align: center;
+
+	.heading {
+		margin: 0 auto 40px;
+		width: 60%;
+
+		p {
+			font-size: 16px;
+			line-height: 1.7;
+		}
+	}
+
+	.columns {
+		width: 80%;
+		margin: 0 auto;
+
+		.col {
+			float: left;
+			width: 25%;
+			margin: 2% 4.166%;
+
+			i {
+				margin-bottom: 10px;
+				color: $red;
+			}
+			&:nth-child(3n+1){
+				clear: both;
+			}
+		}
+
+	}
+
+	p {
+		color: $darkGrey;
+		font-weight: $light;
+	}
+}

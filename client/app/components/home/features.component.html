@@ -1,0 +1,15 @@
+<section class="features">
+	<div class="container">
+		<div class="heading">
+			<h1>Our Features</h1>
+			<p>Argyle comes fully loaded with plenty of features to make group conversations painless and efficient. Compare us against any other messaging app, and we offer the fullest set of features to help make group messaging easy.</p>			
+		</div>
+		<div class="columns">
+			<div class="col" *ngFor="let blurb of blurbs">
+				<i class="fa {{ blurb.icon }} fa-2x"></i>
+				<h5>{{ blurb.title }}</h5>
+				<p>{{ blurb.body }}</p>
+			</div>
+		</div>
+	</div>
+</section>

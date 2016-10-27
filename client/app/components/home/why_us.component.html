@@ -1,0 +1,14 @@
+<section class="why_us">
+	<div class="container">
+		<h1>Why Use Our Platform</h1>
+		<div class="row">
+			<div class="col-sm-4 blurb" *ngFor="let blurb of blurbs">
+				<i class="fa {{ blurb.icon }} fa-3x"></i>
+				<div class="content">
+					<h4>{{ blurb.head }}</h4>
+					<p>{{ blurb.content }}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
