@@ -1,0 +1,77 @@
+<section class="main group">
+	<section class="sidebar">
+		<div class="heading">
+			<h3>{{ name }}</h3>
+			<p>{{ username }}</p>
+		</div>
+		<div class="group-info">
+			<div class="dialogues">
+				<h5>Dialogues</h5>
+				<span role="button" class="fa fa-plus-circle plus-btn" (click)="validationModal.open()"></span>
+				<ul class="dialogues-list">
+					<li *ngFor="let dialogue of dialogues"><a (click)="getDialogue($event, dialogue._id)">{{ dialogue.name }}</a></li>
+				</ul>
+			</div>
+			<div class="members">
+				<h5>Members</h5>
+				<span role="button" class="fa fa-plus-circle plus-btn" (click)="memberModal.open()"></span>
+				<ul class="members-list">
+					<li *ngFor="let member of members">{{ member.email }}</li>
+				</ul>
+			</div>
+		</div>	
+	</section>
+	<section class="content">
+			<div class="title">
+				<div class="container">
+					<h3>{{ dialogueName }}</h3>
+					<button type="button" (click)="joinDialogue($event, dialogue._id)" [class.hide]="isJoined">JOIN</button>
+				</div>
+
+			</div>		
+		<div class="container">
+		</div>
+	</section>
+</section>
+
+<modal #validationModal>
+	<form #modalFormDialogue="ngForm" (submit)="addDialogue($event)">
+		<modal-header [show-close]="true">
+			<h4 class="modal-title">New Dialogue</h4>
+		</modal-header>
+		<modal-body>
+			<div class="form-group">
+				<label for="dialogueName">Enter the Dialogue Name</label>
+				<input type="text" class="form-control" required [(ngModel)]="dialogueName" name="dialogueName" id="dialogueName">
+			</div>
+		</modal-body>
+		<modal-footer>
+			<button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel</button>
+			<button type="submit" class="btn btn-primary" [disabled]="!modalFormDialogue.valid" (click)="validationModal.close()">Save</button>
+		</modal-footer>
+	</form>	
+</modal>
+
+<modal #memberModal>
+	<form #modalForm="ngForm" (submit)="addMembers($event)">
+		<modal-header [show-close]="true">
+			<h4 class="modal-title">Add Members</h4>
+		</modal-header>
+		<modal-body>
+			<div class="form-group">
+				<label for="dialogueName">Enter the Members Email Address</label>
+				<input type="email" class="form-control" required [(ngModel)]="memberEmail" name="memberEmail" id="memberEmail" *ngFor="let input of inputs">
+				<button type="button" class="fa fa-plus-circle" (click)="addInput($event)"></button>
+			</div>
+			<div class="form-members">
+				<ul>
+					<li *ngFor="let member of members">{{ member.email }}</li>
+				</ul>
+			</div>
+		</modal-body>
+		<modal-footer>
+			<button type="button" class="btn btn-default" data-dismiss="modal" (click)="memberModal.dismiss()">Cancel</button>
+			<button type="submit" class="btn btn-primary" [disabled]="!modalForm.valid" (click)="memberModal.close()">Save</button>
+		</modal-footer>
+	</form>	
+</modal>

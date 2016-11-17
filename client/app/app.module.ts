@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { routing, appRoutingProviders } from './app.routing';
 import { HttpModule } from '@angular/http';
 import {FormsModule} from '@angular/forms';
+import { Ng2Bs3ModalModule } from 'ng2-bs3-modal/ng2-bs3-modal';
 
 /* components */
 import { NavComponent } from './components/home/nav.component';
@@ -17,6 +18,7 @@ import { TestemonialsComponent } from './components/home/testemonials.component'
 import { HomeComponent } from './components/home/home.component';
 
 import { NewGroupComponent } from './components/app/newgroup.component';
+import { GroupComponent } from './components/app/group.component';
 
 import { UserComponent } from './components/user/user.component';
 
@@ -27,11 +29,14 @@ import { AuthGuard } from './auth.guard';
 /* services */
 import { Auth } from './services/auth.service';
 import { GroupsService } from './services/groups.service';
+import { DialoguesService } from './services/dialogues.service';
+import { MembersService } from './services/members.service';
+
 
 @NgModule({
-  imports:      [ BrowserModule, routing, HttpModule, FormsModule ],
-  declarations: [ AppComponent, NavComponent, HeaderComponent, WhyUsComponent, HowItWorksComponent, FeaturesComponent, TestemonialsComponent, HomeComponent, UserComponent, NewGroupComponent ],
-  providers: [ appRoutingProviders, AUTH_PROVIDERS, Auth, GroupsService, AuthGuard ],
+  imports:      [ BrowserModule, routing, HttpModule, FormsModule, Ng2Bs3ModalModule ],
+  declarations: [ AppComponent, NavComponent, HeaderComponent, WhyUsComponent, HowItWorksComponent, FeaturesComponent, TestemonialsComponent, HomeComponent, UserComponent, NewGroupComponent, GroupComponent ],
+  providers: [ appRoutingProviders, AUTH_PROVIDERS, Auth, GroupsService, AuthGuard, DialoguesService, MembersService ],
   bootstrap:    [ AppComponent ]
 })
 

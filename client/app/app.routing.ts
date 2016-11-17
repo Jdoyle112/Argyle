@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './components/user/user.component';
 import { HomeComponent } from './components/home/home.component';
 import { NewGroupComponent } from './components/app/newgroup.component';
+import { GroupComponent } from './components/app/group.component';
 
 import { AuthGuard } from './auth.guard';
 
@@ -21,7 +22,15 @@ const appRoutes: Routes = [
 	{
 		path: 'new_group',
 		component: NewGroupComponent
-	}
+	},
+	{
+		path: 'group/:id',
+		component: GroupComponent
+	},
+	{
+		path: 'dialogue/:id',
+		component: GroupComponent
+	}	
 ];
 
 

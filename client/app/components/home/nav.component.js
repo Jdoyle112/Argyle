@@ -18,8 +18,11 @@ var NavComponent = (function () {
         this.groupsService = groupsService;
         this.links = ["Home", "Learn More", "Contact Us"];
         this.groups = [];
-        this.groupsService.getGroups().subscribe(function (groups) {
+        this.profile = JSON.parse(localStorage.getItem('profile'));
+        this.userId = this.profile.user_id;
+        this.groupsService.getGroups(this.userId).subscribe(function (groups) {
             _this.groups = groups;
+            console.log('groups: ' + _this.groups);
         });
     }
     NavComponent = __decorate([

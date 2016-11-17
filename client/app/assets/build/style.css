@@ -9,6 +9,10 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
 body section {
   padding: 100px 0; }
 
+body span.plus-btn {
+  color: #ff4b52;
+  font-size: 16px; }
+
 nav {
   background: linear-gradient(to right, #ff4b52 0%, #ff6e74 100%);
   border: none !important;
@@ -144,3 +148,59 @@ section.testemonials {
     line-height: 1.7;
     font-weight: 300;
     font-size: 16px; }
+
+.main.group {
+  padding: 0; }
+  .main.group .sidebar {
+    float: left;
+    width: 20%;
+    position: fixed;
+    height: 100vh;
+    background: #081e26;
+    padding: 30px 0; }
+    .main.group .sidebar .heading {
+      color: white;
+      padding-left: 20px; }
+      .main.group .sidebar .heading p {
+        color: #b2b2b2; }
+    .main.group .sidebar .group-info {
+      position: absolute;
+      top: 30%;
+      left: 20px; }
+      .main.group .sidebar .group-info h5 {
+        color: white;
+        display: inline-block; }
+      .main.group .sidebar .group-info span.plus-btn {
+        display: inline-block;
+        margin-left: 25px; }
+      .main.group .sidebar .group-info ul {
+        list-style: none;
+        padding-left: 10px; }
+        .main.group .sidebar .group-info ul li {
+          color: #b2b2b2; }
+          .main.group .sidebar .group-info ul li a {
+            color: #b2b2b2;
+            text-decoration: none; }
+      .main.group .sidebar .group-info .dialogues {
+        margin-bottom: 40px; }
+  .main.group .content {
+    position: absolute;
+    width: 80%;
+    left: 20%;
+    overflow-y: hidden;
+    height: 100vh;
+    padding: 0; }
+    .main.group .content .title {
+      height: 120px;
+      background: #eff3f6; }
+      .main.group .content .title button {
+        position: absolute;
+        right: 200px;
+        display: inline-block;
+        top: 5%; }
+        .main.group .content .title button.hide {
+          display: none; }
+      .main.group .content .title h3 {
+        display: inline-block;
+        margin: 0;
+        line-height: 120px; }

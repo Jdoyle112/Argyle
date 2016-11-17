@@ -11,40 +11,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var GroupsService = (function () {
-    function GroupsService(http) {
+var MembersService = (function () {
+    function MembersService(http) {
         this.http = http;
         console.log('task service init..');
     }
-    GroupsService.prototype.getGroups = function (id) {
-        return this.http.get('/api/groups/' + id)
+    MembersService.prototype.getMembers = function (id) {
+        return this.http.get('/api/members/' + id)
             .map(function (res) { return res.json(); });
     };
-    GroupsService.prototype.getGroup = function (id) {
-        return this.http.get('/api/groups/group/' + id)
-            .map(function (res) { return res.json(); });
-    };
-    GroupsService.prototype.addGroup = function (newGroup) {
+    MembersService.prototype.addMember = function (newMember) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/groups/newgroup', JSON.stringify(newGroup), { headers: headers })
+        return this.http.post('/api/members/newmember', JSON.stringify(newMember), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    GroupsService.prototype.deleteGroup = function (id) {
-        return this.http.delete('/api/groups/deletegroup/' + id)
-            .map(function (res) { return res.json(); });
-    };
-    GroupsService.prototype.setStatus = function (id, updGroup) {
-        var headers = new http_1.Headers();
-        headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/groups/status/' + id, JSON.stringify(updGroup), { headers: headers })
-            .map(function (res) { return res.json(); });
-    };
-    GroupsService = __decorate([
+    MembersService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], GroupsService);
-    return GroupsService;
+    ], MembersService);
+    return MembersService;
 }());
-exports.GroupsService = GroupsService;
-//# sourceMappingURL=groups.service.js.map
+exports.MembersService = MembersService;
+//# sourceMappingURL=members.service.js.map

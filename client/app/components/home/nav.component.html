@@ -4,19 +4,17 @@
 			<div class="col-sm-2 logo">
 				<img src="app/assets/images/logo-white.png" />
 			</div>
-			<div class="col-sm-8">
+			<div class="col-sm-10">
 				<ul class="nav navbar-nav">
 					<li *ngFor="let link of links"><a href="#">{{ link }}</a></li>
+					<li><a routerLink="#" class="login" (click)="auth.login()" *ngIf="!auth.authenticated()">Login</a></li>
+					<li><a routerLink="#" class="login" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a></li>
+					<li><a routerLink="profile" class="profile" *ngIf="auth.authenticated()">Profile</a></li>
+					<li><button type="button" (click)="isClassVisible = !isClassVisible">Groups</button></li>
 				</ul>
-			</div>
-			<div class="col-sm-2">
-				<a routerLink="#" class="login" (click)="auth.login()" *ngIf="!auth.authenticated()">Login</a>
-				<a routerLink="#" class="login" (click)="auth.logout()" *ngIf="auth.authenticated()">Logout</a>
-				<a routerLink="profile" class="profile" *ngIf="auth.authenticated()">Profile</a>
-				<button type="button" (click)="isClassVisible = !isClassVisible">Groups</button>
 				<ul class="groups-dropdown" [class.active]="isClassVisible">
-					<li *ngFor="let group of groups">{{ group.name }}</li>
-					<li routerLink="new_group" *ngIf="auth.authenticated()">Create a New Group</li>
+					<li *ngFor="let group of groups"><a routerLink="group/{{ group._id }}">{{ group.name }}</a></li>
+					<li routerLink="new_group" *ngIf="auth.authenticated()">Edit Groups</li>
 				</ul>
 			</div>
 		</div>

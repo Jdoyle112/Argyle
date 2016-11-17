@@ -11,12 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var auth_service_1 = require('../../services/auth.service');
 var groups_service_1 = require('../../services/groups.service');
+var group_1 = require('../../models/group');
 var NewGroupComponent = (function () {
     function NewGroupComponent(auth, groupsService) {
         var _this = this;
         this.auth = auth;
         this.groupsService = groupsService;
-        this.groupsService.getGroups().subscribe(function (groups) {
+        this.profile = JSON.parse(localStorage.getItem('profile'));
+        this.userId = this.profile.user_id;
+        this.groupsService.getGroups(this.userId).subscribe(function (groups) {
             _this.groups = groups;
         });
     }
@@ -25,7 +28,9 @@ var NewGroupComponent = (function () {
         event.preventDefault();
         var newGroup = {
             name: this.name,
-            active: true
+            active: true,
+            users: this.profile.user_id,
+            onlineUsers: []
         };
         this.groupsService.addGroup(newGroup)
             .subscribe(function (group) {
@@ -49,7 +54,8 @@ var NewGroupComponent = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'new-group',
-            templateUrl: 'newgroup.component.html'
+            templateUrl: 'newgroup.component.html',
+            providers: [group_1.Group]
         }), 
         __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService])
     ], NewGroupComponent);

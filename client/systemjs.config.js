@@ -4,6 +4,7 @@
  */
 (function (global) {
   System.config({
+    defaultJSExtensions: true,
     paths: {
       // paths serve as alias
       'npm:': 'node_modules/'
@@ -26,7 +27,8 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api',
       'angular2-jwt':               'node_modules/angular2-jwt/angular2-jwt.js',
       'js-base64':'npm:js-base64/base64.js',
-      'buffer':'@empty'
+      'buffer':'@empty',
+      'ng2-bs3-modal': 'node_modules/ng2-bs3-modal'
 
     },
     // packages tells the System loader how to load when no filename and/or no extension

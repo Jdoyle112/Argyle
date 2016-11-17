@@ -7,15 +7,22 @@ import { Group } from '../../models/group';
 @Component({
 	moduleId: module.id,
 	selector: 'new-group',
-	templateUrl: 'newgroup.component.html'
+	templateUrl: 'newgroup.component.html',
+	providers: [ Group ]
 })
 
 export class NewGroupComponent {
 	groups: Group[];
 	name: string;
+	profile: any;
+	username: string;
+	userId: string;
 	
 	constructor(private auth: Auth, private groupsService: GroupsService){
-		this.groupsService.getGroups().subscribe(groups => {
+		this.profile = JSON.parse(localStorage.getItem('profile'));
+		this.userId = this.profile.user_id;
+
+		this.groupsService.getGroups(this.userId).subscribe(groups => {
 			this.groups = groups;
 		});
 	}
@@ -24,7 +31,9 @@ export class NewGroupComponent {
 		event.preventDefault();
 		var newGroup = {
 			name: this.name,
-			active: true
+			active: true,
+			users: this.profile.user_id,
+			onlineUsers: []
 		}
 
 		this.groupsService.addGroup(newGroup)	

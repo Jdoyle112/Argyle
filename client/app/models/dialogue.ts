@@ -1,7 +1,8 @@
-export class Group {
+export class Dialogue {
 	_id: number;
 	name: string;
 	active: boolean;
 	users: any;
-	onlineUsers: any;
+	admin: string;
+	isJoined: boolean;
 }

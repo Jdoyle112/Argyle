@@ -11,40 +11,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var GroupsService = (function () {
-    function GroupsService(http) {
+var DialoguesService = (function () {
+    function DialoguesService(http) {
         this.http = http;
         console.log('task service init..');
     }
-    GroupsService.prototype.getGroups = function (id) {
-        return this.http.get('/api/groups/' + id)
+    DialoguesService.prototype.getDialogues = function (id) {
+        return this.http.get('/api/dialogues/' + id)
             .map(function (res) { return res.json(); });
     };
-    GroupsService.prototype.getGroup = function (id) {
-        return this.http.get('/api/groups/group/' + id)
+    DialoguesService.prototype.getDialogue = function (id) {
+        return this.http.get('/api/dialogues/dialogue/' + id)
             .map(function (res) { return res.json(); });
     };
-    GroupsService.prototype.addGroup = function (newGroup) {
+    DialoguesService.prototype.addDialogue = function (newDialogue) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.post('/api/groups/newgroup', JSON.stringify(newGroup), { headers: headers })
+        return this.http.post('/api/dialogues/newdialogue', JSON.stringify(newDialogue), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    GroupsService.prototype.deleteGroup = function (id) {
-        return this.http.delete('/api/groups/deletegroup/' + id)
-            .map(function (res) { return res.json(); });
-    };
-    GroupsService.prototype.setStatus = function (id, updGroup) {
+    DialoguesService.prototype.joinDialogue = function (dialogueId, updDialogue) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http.put('/api/groups/status/' + id, JSON.stringify(updGroup), { headers: headers })
+        return this.http.put('/api/dialogues/join/' + dialogueId, JSON.stringify(updDialogue), { headers: headers })
             .map(function (res) { return res.json(); });
     };
-    GroupsService = __decorate([
+    DialoguesService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], GroupsService);
-    return GroupsService;
+    ], DialoguesService);
+    return DialoguesService;
 }());
-exports.GroupsService = GroupsService;
-//# sourceMappingURL=groups.service.js.map
+exports.DialoguesService = DialoguesService;
+//# sourceMappingURL=dialogues.service.js.map

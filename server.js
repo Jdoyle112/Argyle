@@ -4,15 +4,19 @@ var bodyParser = require('body-parser');
 var router = express.Router();
 
 var index = require('./routes/index');
-var db = require('./routes/db');
+var members = require('./routes/members');
+var groups = require('./routes/groups');
+var dialogues = require('./routes/dialogue');
 
 // local port
-//var port = 3000;
+var port = 3000;
 
 // heroku port
-var port = process.env.PORT || 8080;
+//var port = process.env.PORT || 8080;
 
 var app = express();
+
+app.use(router);
 
 // view Engine
 app.set('views', path.join(__dirname, '/client/app/views'));
@@ -27,12 +31,15 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 
-
 // routes files
-app.use('/', index);
+app.use('/', [index, groups]);
 app.use('/profile', index);
 app.use('/groups', index);
-app.use('/api', index);
+app.use('/group', index);
+app.use('/dialogue', index);
+
+app.use('/api', [groups, dialogues, members]);
+
 
 app.listen(port, function(){
 	console.log('Server started on port ' + port);
