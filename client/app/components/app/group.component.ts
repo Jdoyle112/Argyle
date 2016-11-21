@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Auth } from '../../services/auth.service';
 import { GroupsService } from '../../services/groups.service';
 import { DialoguesService } from '../../services/dialogues.service';
-import { Group } from '../../models/group';
+//import { Group } from '../../models/group';
 import { Dialogue } from '../../models/dialogue';
 import { ActivatedRoute }     from '@angular/router';
 import { Member } from '../../models/member';
@@ -13,11 +13,11 @@ import { MembersService } from '../../services/members.service';
 	moduleId: module.id,
 	selector: 'group',
 	templateUrl: 'group.component.html',
-	providers: [ Group, Member ]
+	providers: [ /*Group*/, Member ]
 })
 
 export class GroupComponent {
-	group: any;
+	//group: any;
 	groupId: string;
 	dialogues: Dialogue[];
 	dialogue: any;
@@ -55,12 +55,17 @@ export class GroupComponent {
 	       this.id = params['id']; 
 	       this.urlPath = this.route.snapshot.url[0].path;
 			
-	       	// get the group
-			this.groupsService.getGroup(this.id).subscribe(group => {
-				this.group = group;
-				this.name = group.name;
-				this.groupId = group._id;
-				
+		   // initialize group object
+		  // let group = new Group(this.id, this.groupsService);
+		   //console.log(group);
+
+		   	// get the group
+			/*getGroup(){
+				this.groupsService.getGroup(this._id).subscribe(group => {
+					return group;	
+				});
+			}*/
+			/*	
 				// set online status
 				var updGroup = this.group;
 	  			updGroup.onlineUsers.push(this.userId);	
@@ -70,9 +75,9 @@ export class GroupComponent {
 			  		
 		  		});	  			
 
-	  		});
+	  		});*/
 	    });
-
+		/*
 	    // get all dialogues for sidebar
 		this.dialoguesService.getDialogues(this.id).subscribe(dialogues => {
 			console.log('dialogues: '+ dialogues);
@@ -82,10 +87,10 @@ export class GroupComponent {
 	    // get all members of group
 	  	this.membersService.getMembers(this.id).subscribe(members => {
 	  	  	this.members = members;
-	  	});
+	  	});*/
 	}
 
-	addDialogue(event){
+	/*addDialogue(event){
 		event.preventDefault();
 		var newDialogue = {
 			name: this.dialogueName,
@@ -148,7 +153,7 @@ export class GroupComponent {
 		this.dialoguesService.joinDialogue(id, updDialogue).subscribe(
 
 		);
-	}
+	}*/
 
 	ngOnDestroy(){
 		// set status to false

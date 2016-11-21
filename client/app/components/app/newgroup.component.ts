@@ -18,7 +18,7 @@ export class NewGroupComponent {
 	username: string;
 	userId: string;
 	
-	constructor(private auth: Auth, private groupsService: GroupsService){
+	constructor(private auth: Auth, private groupsService: GroupsService, private group: Group){
 		this.profile = JSON.parse(localStorage.getItem('profile'));
 		this.userId = this.profile.user_id;
 
@@ -27,16 +27,16 @@ export class NewGroupComponent {
 		});
 	}
 
+
 	addGroup(event){
 		event.preventDefault();
-		var newGroup = {
-			name: this.name,
-			active: true,
-			users: this.profile.user_id,
-			onlineUsers: []
-		}
+		let group = new Group();
+		group.name = this.name;
+		group.admin = this.userId;
+		group.users = [this.userId];
+		console.log(group);
 
-		this.groupsService.addGroup(newGroup)	
+		this.groupsService.addGroup(group)	
 			.subscribe(group => {
 				this.groups.push(group);
 				this.name = '';
@@ -45,7 +45,7 @@ export class NewGroupComponent {
 
 
 	deleteGroup(id){
-		var groups = this.groups;
+		/*var groups = this.groups;
 
 		this.groupsService.deleteGroup(id).subscribe(data => {
 			if(data.n == 1){
@@ -55,7 +55,7 @@ export class NewGroupComponent {
 					}
 				}
 			}
-		});
+		});*/
 	}
 
 }

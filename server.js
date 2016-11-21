@@ -16,8 +16,6 @@ var port = 3000;
 
 var app = express();
 
-// teste
-
 app.use(router);
 
 // view Engine

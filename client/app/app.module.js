@@ -34,6 +34,8 @@ var auth_service_1 = require('./services/auth.service');
 var groups_service_1 = require('./services/groups.service');
 var dialogues_service_1 = require('./services/dialogues.service');
 var members_service_1 = require('./services/members.service');
+/* Models */
+var group_1 = require('./models/group');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -41,7 +43,7 @@ var AppModule = (function () {
         core_1.NgModule({
             imports: [platform_browser_1.BrowserModule, app_routing_1.routing, http_1.HttpModule, forms_1.FormsModule, ng2_bs3_modal_1.Ng2Bs3ModalModule],
             declarations: [app_component_1.AppComponent, nav_component_1.NavComponent, header_component_1.HeaderComponent, why_us_component_1.WhyUsComponent, how_it_works_component_1.HowItWorksComponent, features_component_1.FeaturesComponent, testemonials_component_1.TestemonialsComponent, home_component_1.HomeComponent, user_component_1.UserComponent, newgroup_component_1.NewGroupComponent, group_component_1.GroupComponent],
-            providers: [app_routing_1.appRoutingProviders, angular2_jwt_1.AUTH_PROVIDERS, auth_service_1.Auth, groups_service_1.GroupsService, auth_guard_1.AuthGuard, dialogues_service_1.DialoguesService, members_service_1.MembersService],
+            providers: [app_routing_1.appRoutingProviders, angular2_jwt_1.AUTH_PROVIDERS, auth_service_1.Auth, groups_service_1.GroupsService, auth_guard_1.AuthGuard, dialogues_service_1.DialoguesService, members_service_1.MembersService, group_1.Group],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

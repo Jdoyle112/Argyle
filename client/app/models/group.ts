@@ -1,7 +1,18 @@
 export class Group {
-	_id: number;
+	// group properties
+	//_id: number;
 	name: string;
-	active: boolean;
-	users: any;
-	onlineUsers: any;
+	admin: string;
+	date_created: string;
+	users: Array<string>;
+	//onlineUsers: Array<string>;
+
+
+	/*constructor(name: string, userId: string){
+		this.name = name;
+		this.admin = userId;
+		this.date_created = "";
+		this.users = [userId];
+	}*/
+
 }
