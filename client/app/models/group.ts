@@ -1,6 +1,6 @@
 export class Group {
 	// group properties
-	//_id: number;
+	_id: number;
 	name: string;
 	admin: string;
 	date_created: string;

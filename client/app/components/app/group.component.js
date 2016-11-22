@@ -12,6 +12,8 @@ var core_1 = require('@angular/core');
 var auth_service_1 = require('../../services/auth.service');
 var groups_service_1 = require('../../services/groups.service');
 var dialogues_service_1 = require('../../services/dialogues.service');
+var group_1 = require('../../models/group');
+var dialogue_1 = require('../../models/dialogue');
 var router_1 = require('@angular/router');
 var member_1 = require('../../models/member');
 var members_service_1 = require('../../services/members.service');
@@ -28,6 +30,7 @@ var GroupComponent = (function () {
         this.userEmail = this.profile.email;
         this.username = this.profile.nickname;
         this.userId = this.profile.user_id;
+        console.log(this.userId);
     }
     GroupComponent.prototype.addInput = function (event) {
         event.preventDefault();
@@ -38,103 +41,92 @@ var GroupComponent = (function () {
         this.sub = this.route.params.subscribe(function (params) {
             _this.id = params['id'];
             _this.urlPath = _this.route.snapshot.url[0].path;
-            // initialize group object
-            // let group = new Group(this.id, this.groupsService);
-            //console.log(group);
             // get the group
-            /*getGroup(){
-                this.groupsService.getGroup(this._id).subscribe(group => {
-                    return group;
-                });
-            }*/
-            /*
-                // set online status
-                var updGroup = this.group;
-                updGroup.onlineUsers.push(this.userId);
-                this.groupsService.setStatus(this.id, updGroup).subscribe(group => {
-                    // set status to true
-                    console.log('group: '+group.users);
-                    
-                });
-
-            });*/
+            // set online status
+            /*var updGroup = this.group;
+            updGroup.onlineUsers.push(this.userId);
+            this.groupsService.setStatus(this.id, updGroup).subscribe(group => {
+                // set status to true
+                console.log('group: '+group.users);
+                
+            });	  */
         });
-        /*
+        this.groupsService.getGroup(this.id).subscribe(function (group) {
+            _this.group = group;
+            _this.name = group.name;
+            _this.groupMembers = group.users;
+            // get members
+            for (var _i = 0, _a = _this.groupMembers; _i < _a.length; _i++) {
+                var id = _a[_i];
+                console.log(id);
+                _this.membersService.getMembers(id).subscribe(function (member) {
+                    console.log(member);
+                });
+            }
+        });
         // get all dialogues for sidebar
-        this.dialoguesService.getDialogues(this.id).subscribe(dialogues => {
-            console.log('dialogues: '+ dialogues);
-                this.dialogues = dialogues;
-            });
-
-        // get all members of group
-        this.membersService.getMembers(this.id).subscribe(members => {
-            this.members = members;
-        });*/
+        this.dialoguesService.getDialogues(this.id).subscribe(function (dialogues) {
+            _this.dialogues = dialogues;
+        });
     };
-    /*addDialogue(event){
+    GroupComponent.prototype.addDialogue = function (event) {
+        var _this = this;
         event.preventDefault();
-        var newDialogue = {
-            name: this.dialogueName,
-            admin: this.userId,
-            members: [],
-            groupId: this.groupId,
-            public: true
-        }
-
-        this.dialoguesService.addDialogue(newDialogue)
-            .subscribe(dialogue => {
-                this.dialogues.push(dialogue);
-                this.dialogueName = '';
-            });
-    }
-
-    getDialogue(event, dialogueId){
+        var dialogue = new dialogue_1.Dialogue();
+        dialogue.name = this.dialogueName;
+        dialogue.admin = this.userId;
+        dialogue.members = [this.userId];
+        dialogue.groupId = this.id;
+        dialogue.public = true;
+        this.dialoguesService.addDialogue(dialogue)
+            .subscribe(function (dialogue) {
+            _this.dialogues.push(dialogue);
+            _this.dialogueName = '';
+        });
+    };
+    GroupComponent.prototype.getDialogue = function (event, dialogueId) {
+        var _this = this;
         event.preventDefault();
-        this.dialoguesService.getDialogue(dialogueId).subscribe(dialogue => {
-            this.dialogue = dialogue;
-            this.dialogueName = dialogue.name;
-            for(let member of dialogue.members){
-                if(member == this.userId){
+        this.dialoguesService.getDialogue(dialogueId).subscribe(function (dialogue) {
+            _this.dialogue = dialogue;
+            _this.dialogueName = dialogue.name;
+            for (var _i = 0, _a = dialogue.members; _i < _a.length; _i++) {
+                var member = _a[_i];
+                if (member == _this.userId) {
                     // hide join btn
-                    this.isJoined = true;
-                } else {
+                    _this.isJoined = true;
+                }
+                else {
                     // display join button
-                    this.isJoined = false;
+                    _this.isJoined = false;
                 }
             }
-
         });
-    }
-
-
-    addMembers(event){
+    };
+    GroupComponent.prototype.addMembers = function (event) {
+        var _this = this;
         event.preventDefault();
         var newMember = {
             email: this.memberEmail,
             groupId: this.groupId
-        }
-
+        };
         this.membersService.addMember(newMember).
-            subscribe(member => {
-                this.members.push(member);
-                this.memberEmail = '';
-            });
-    }
-
-    joinDialogue(event, id){
+            subscribe(function (member) {
+            _this.members.push(member);
+            _this.memberEmail = '';
+        });
+    };
+    GroupComponent.prototype.joinDialogue = function (event, id) {
         event.preventDefault();
-
         var updDialogue = {
             _id: this.dialogue._id,
             admin: this.dialogue.admin,
             name: this.dialogue.name,
             members: this.dialogue.members
-        }
+        };
         updDialogue.members.push(this.userId);
-        this.dialoguesService.joinDialogue(id, updDialogue).subscribe(
-
-        );
-    }*/
+        this.dialoguesService.joinDialogue(id, updDialogue).subscribe();
+    };
     GroupComponent.prototype.ngOnDestroy = function () {
         // set status to false
         this.sub.unsubscribe();
@@ -144,7 +136,7 @@ var GroupComponent = (function () {
             moduleId: module.id,
             selector: 'group',
             templateUrl: 'group.component.html',
-            providers: [ /*Group*/, member_1.Member]
+            providers: [group_1.Group, member_1.Member]
         }), 
         __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, router_1.ActivatedRoute, dialogues_service_1.DialoguesService, members_service_1.MembersService])
     ], GroupComponent);

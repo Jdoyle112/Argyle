@@ -1,11 +1,6 @@
 "use strict";
 var Group = (function () {
-    //onlineUsers: Array<string>;
-    function Group(name, userId) {
-        this.name = name;
-        this.admin = userId;
-        this.date_created = "";
-        this.users = [userId];
+    function Group() {
     }
     return Group;
 }());

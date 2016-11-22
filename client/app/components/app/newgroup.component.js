@@ -11,13 +11,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var auth_service_1 = require('../../services/auth.service');
 var groups_service_1 = require('../../services/groups.service');
+var members_service_1 = require('../../services/members.service');
 var group_1 = require('../../models/group');
 var NewGroupComponent = (function () {
-    function NewGroupComponent(auth, groupsService, group) {
+    function NewGroupComponent(auth, groupsService, group, membersService) {
         var _this = this;
         this.auth = auth;
         this.groupsService = groupsService;
         this.group = group;
+        this.membersService = membersService;
         this.profile = JSON.parse(localStorage.getItem('profile'));
         this.userId = this.profile.user_id;
         this.groupsService.getGroups(this.userId).subscribe(function (groups) {
@@ -31,7 +33,6 @@ var NewGroupComponent = (function () {
         group.name = this.name;
         group.admin = this.userId;
         group.users = [this.userId];
-        console.log(group);
         this.groupsService.addGroup(group)
             .subscribe(function (group) {
             _this.groups.push(group);
@@ -58,7 +59,7 @@ var NewGroupComponent = (function () {
             templateUrl: 'newgroup.component.html',
             providers: [group_1.Group]
         }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, group_1.Group])
+        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, group_1.Group, members_service_1.MembersService])
     ], NewGroupComponent);
     return NewGroupComponent;
 }());

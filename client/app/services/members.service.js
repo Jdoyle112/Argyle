@@ -14,7 +14,6 @@ require('rxjs/add/operator/map');
 var MembersService = (function () {
     function MembersService(http) {
         this.http = http;
-        console.log('task service init..');
     }
     MembersService.prototype.getMembers = function (id) {
         return this.http.get('/api/members/' + id)

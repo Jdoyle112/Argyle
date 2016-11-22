@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Auth } from '../../services/auth.service';
 import { GroupsService } from '../../services/groups.service';
+import { MembersService } from '../../services/members.service';
 import { Group } from '../../models/group';
 
 
@@ -18,12 +19,13 @@ export class NewGroupComponent {
 	username: string;
 	userId: string;
 	
-	constructor(private auth: Auth, private groupsService: GroupsService, private group: Group){
+	constructor(private auth: Auth, private groupsService: GroupsService, private group: Group, private membersService: MembersService){
 		this.profile = JSON.parse(localStorage.getItem('profile'));
 		this.userId = this.profile.user_id;
 
 		this.groupsService.getGroups(this.userId).subscribe(groups => {
 			this.groups = groups;
+
 		});
 	}
 
@@ -34,7 +36,6 @@ export class NewGroupComponent {
 		group.name = this.name;
 		group.admin = this.userId;
 		group.users = [this.userId];
-		console.log(group);
 
 		this.groupsService.addGroup(group)	
 			.subscribe(group => {
