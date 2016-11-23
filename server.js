@@ -2,6 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var router = express.Router();
+var jwt = require('express-jwt');
 
 var index = require('./routes/index');
 var members = require('./routes/members');
@@ -15,8 +16,6 @@ var port = 3000;
 //var port = process.env.PORT || 8080;
 
 var app = express();
-
-// teste
 
 app.use(router);
 
@@ -41,6 +40,7 @@ app.use('/group', index);
 app.use('/dialogue', index);
 
 app.use('/api', [groups, dialogues, members]);
+app.use('https://jdoyle112.auth0.com/api', groups);
 
 
 app.listen(port, function(){

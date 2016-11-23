@@ -1,7 +1,8 @@
 export class Member {
-	_id: number;
 	name: string;
 	email: string;
 	activated: boolean;
-	groupId: string;
+	groupId: Array<number>;
+	dialogueId: Array<number>;
+	date_created: string;
 }

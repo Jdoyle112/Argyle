@@ -32,11 +32,14 @@ import { GroupsService } from './services/groups.service';
 import { DialoguesService } from './services/dialogues.service';
 import { MembersService } from './services/members.service';
 
+/* Models */
+import { Group } from './models/group';
+
 
 @NgModule({
   imports:      [ BrowserModule, routing, HttpModule, FormsModule, Ng2Bs3ModalModule ],
   declarations: [ AppComponent, NavComponent, HeaderComponent, WhyUsComponent, HowItWorksComponent, FeaturesComponent, TestemonialsComponent, HomeComponent, UserComponent, NewGroupComponent, GroupComponent ],
-  providers: [ appRoutingProviders, AUTH_PROVIDERS, Auth, GroupsService, AuthGuard, DialoguesService, MembersService ],
+  providers: [ appRoutingProviders, AUTH_PROVIDERS, Auth, GroupsService, AuthGuard, DialoguesService, MembersService, Group ],
   bootstrap:    [ AppComponent ]
 })
 

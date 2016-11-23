@@ -1,11 +1,12 @@
 import { Injectable }      from '@angular/core';
 import { Http, Headers }   from '@angular/http';
+import {Auth} from './auth.service';
+import {AuthHttp} from 'angular2-jwt';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class MembersService {
 	constructor(private http:Http){
-		console.log('task service init..');
 	}
 
 
@@ -13,7 +14,6 @@ export class MembersService {
         return this.http.get('/api/members/'+id)
             .map(res => res.json());
     }
-
 
 	addMember(newMember){
 		var headers = new Headers();
