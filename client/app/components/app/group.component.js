@@ -58,9 +58,8 @@ var GroupComponent = (function () {
             // get members
             for (var _i = 0, _a = _this.groupMembers; _i < _a.length; _i++) {
                 var id = _a[_i];
-                console.log(id);
                 _this.membersService.getMembers(id).subscribe(function (member) {
-                    console.log(member);
+                    _this.groupMembers.push(member);
                 });
             }
         });

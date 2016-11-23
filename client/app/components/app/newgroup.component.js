@@ -33,6 +33,7 @@ var NewGroupComponent = (function () {
         group.name = this.name;
         group.admin = this.userId;
         group.users = [this.userId];
+        group.date_created = new Date();
         this.groupsService.addGroup(group)
             .subscribe(function (group) {
             _this.groups.push(group);

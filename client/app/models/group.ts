@@ -3,7 +3,7 @@ export class Group {
 	_id: number;
 	name: string;
 	admin: string;
-	date_created: string;
+	date_created: any;
 	users: Array<string>;
 	//onlineUsers: Array<string>;
 
