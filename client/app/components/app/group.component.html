@@ -16,11 +16,12 @@
 				<h5>Members</h5>
 				<span role="button" class="fa fa-plus-circle plus-btn" (click)="memberModal.open()"></span>
 				<ul class="members-list">
-					<li *ngFor="let member of members">{{ member.email }}</li>
+					<li *ngFor="let member of groupMembers">{{ member.email }}</li>
 				</ul>
 			</div>
 		</div>	
 	</section>
+
 	<section class="content">
 			<div class="title">
 				<div class="container">

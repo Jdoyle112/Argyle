@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Auth } from '../../services/auth.service';
 import { GroupsService } from '../../services/groups.service';
-
+import { Group } from '../../models/group';
 
 @Component({
 	moduleId: module.id,
@@ -11,7 +11,7 @@ import { GroupsService } from '../../services/groups.service';
 
 export class NavComponent {
 	links = ["Home", "Learn More", "Contact Us"];
-	groups = [];
+	groups: Group[];
 	isClassVisible: false;
 	userId: string;
 	profile: any; 
@@ -23,8 +23,9 @@ export class NavComponent {
 		
 		this.groupsService.getGroups(this.userId).subscribe(groups => {
 			this.groups = groups;
-			console.log('groups: '+this.groups);
-		});
 
+			// sort the groups
+			this.groups.sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime());
+		});
 	}
 }

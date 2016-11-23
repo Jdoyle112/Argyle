@@ -36,6 +36,7 @@ export class NewGroupComponent {
 		group.name = this.name;
 		group.admin = this.userId;
 		group.users = [this.userId];
+		group.date_created = new Date();
 
 		this.groupsService.addGroup(group)	
 			.subscribe(group => {

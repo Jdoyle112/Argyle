@@ -77,9 +77,8 @@ export class GroupComponent implements OnInit {
 			
 			// get members
 			for(let id of this.groupMembers){
-				console.log(id);
 				this.membersService.getMembers(id).subscribe(member => {
-					console.log(member);
+					this.groupMembers.push(member);
 				});
 			}
 		});
