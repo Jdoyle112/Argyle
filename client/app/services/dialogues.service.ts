@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class DialoguesService {
 	constructor(private http:Http){
-		console.log('task service init..');
 	}
 
 	getDialogues(id){

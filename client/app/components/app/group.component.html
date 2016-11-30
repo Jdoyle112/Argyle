@@ -1,17 +1,18 @@
 <section class="main group">
 	<section class="sidebar">
 		<div class="heading">
-			<h3>{{ name }}</h3>
+			<h3>{{ group.name }}</h3>
 			<p>{{ username }}</p>
 		</div>
 		<div class="group-info">
-			<div class="dialogues">
+			<!--<div class="dialogues">
 				<h5>Dialogues</h5>
 				<span role="button" class="fa fa-plus-circle plus-btn" (click)="validationModal.open()"></span>
 				<ul class="dialogues-list">
 					<li *ngFor="let dialogue of dialogues"><a (click)="getDialogue($event, dialogue._id)">{{ dialogue.name }}</a></li>
 				</ul>
-			</div>
+			</div>-->
+			<dialogues [groupId]="id" (sendDialogue)='compDialogueId = $event'></dialogues>
 			<div class="members">
 				<h5>Members</h5>
 				<span role="button" class="fa fa-plus-circle plus-btn" (click)="memberModal.open()"></span>
@@ -21,37 +22,10 @@
 			</div>
 		</div>	
 	</section>
-
-	<section class="content">
-			<div class="title">
-				<div class="container">
-					<h3>{{ dialogueName }}</h3>
-					<button type="button" (click)="joinDialogue($event, dialogue._id)" [class.hide]="isJoined">JOIN</button>
-				</div>
-
-			</div>		
-		<div class="container">
-		</div>
-	</section>
+	<dialogue [groupId]="id" [(dialogueId)]="compDialogueId"></dialogue>
 </section>
 
-<modal #validationModal>
-	<form #modalFormDialogue="ngForm" (submit)="addDialogue($event)">
-		<modal-header [show-close]="true">
-			<h4 class="modal-title">New Dialogue</h4>
-		</modal-header>
-		<modal-body>
-			<div class="form-group">
-				<label for="dialogueName">Enter the Dialogue Name</label>
-				<input type="text" class="form-control" required [(ngModel)]="dialogueName" name="dialogueName" id="dialogueName">
-			</div>
-		</modal-body>
-		<modal-footer>
-			<button type="button" class="btn btn-default" data-dismiss="modal" (click)="validationModal.dismiss()">Cancel</button>
-			<button type="submit" class="btn btn-primary" [disabled]="!modalFormDialogue.valid" (click)="validationModal.close()">Save</button>
-		</modal-footer>
-	</form>	
-</modal>
+
 
 <modal #memberModal>
 	<form #modalForm="ngForm" (submit)="addMembers($event)">

@@ -14,11 +14,10 @@ var groups_service_1 = require('../../services/groups.service');
 var members_service_1 = require('../../services/members.service');
 var group_1 = require('../../models/group');
 var NewGroupComponent = (function () {
-    function NewGroupComponent(auth, groupsService, group, membersService) {
+    function NewGroupComponent(auth, groupsService, membersService) {
         var _this = this;
         this.auth = auth;
         this.groupsService = groupsService;
-        this.group = group;
         this.membersService = membersService;
         this.profile = JSON.parse(localStorage.getItem('profile'));
         this.userId = this.profile.user_id;
@@ -29,6 +28,13 @@ var NewGroupComponent = (function () {
     NewGroupComponent.prototype.addGroup = function (event) {
         var _this = this;
         event.preventDefault();
+        /*var data = {
+            name: this.name,
+            userId: this.userId,
+            date_created: new Date(),
+        }
+
+        console.log(this.group.create(data));*/
         var group = new group_1.Group();
         group.name = this.name;
         group.admin = this.userId;
@@ -60,7 +66,7 @@ var NewGroupComponent = (function () {
             templateUrl: 'newgroup.component.html',
             providers: [group_1.Group]
         }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, group_1.Group, members_service_1.MembersService])
+        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, members_service_1.MembersService])
     ], NewGroupComponent);
     return NewGroupComponent;
 }());

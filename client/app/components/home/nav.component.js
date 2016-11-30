@@ -18,12 +18,17 @@ var NavComponent = (function () {
         this.groupsService = groupsService;
         this.links = ["Home", "Learn More", "Contact Us"];
         this.profile = JSON.parse(localStorage.getItem('profile'));
-        this.userId = this.profile.user_id;
-        this.groupsService.getGroups(this.userId).subscribe(function (groups) {
-            _this.groups = groups;
-            // sort the groups
-            _this.groups.sort(function (a, b) { return new Date(b.date_created).getTime() - new Date(a.date_created).getTime(); });
-        });
+        if (this.profile) {
+            this.userId = this.profile.user_id;
+        }
+        if (this.userId) {
+            this.groupsService.getGroups(this.userId).subscribe(function (groups) {
+                _this.groups = groups;
+                _this.groupId = groups._id;
+                // sort the groups
+                _this.groups.sort(function (a, b) { return new Date(b.date_created).getTime() - new Date(a.date_created).getTime(); });
+            });
+        }
     }
     NavComponent = __decorate([
         core_1.Component({
