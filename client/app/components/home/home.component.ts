@@ -7,7 +7,7 @@ import { GroupsService } from '../../services/groups.service';
   template: '<navigation></navigation><header-hero></header-hero><why_us-section></why_us-section><how_it_works></how_it_works><features></features><testemonials></testemonials>',
 })
 export class HomeComponent { 
-	constructor(private auth: Auth){
+	constructor(){
 	
 	}
 

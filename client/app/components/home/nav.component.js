@@ -8,32 +8,36 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../services/auth.service');
-var groups_service_1 = require('../../services/groups.service');
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../services/auth.service");
+var groups_service_1 = require("../../services/groups.service");
 var NavComponent = (function () {
     function NavComponent(auth, groupsService) {
         var _this = this;
         this.auth = auth;
         this.groupsService = groupsService;
         this.links = ["Home", "Learn More", "Contact Us"];
-        this.profile = JSON.parse(localStorage.getItem('profile'));
-        this.userId = this.profile.user_id;
+        if (JSON.parse(localStorage.getItem('profile'))) {
+            this.profile = JSON.parse(localStorage.getItem('profile'));
+            this.userId = this.profile.user_id;
+        }
+        //this.profile = JSON.parse(localStorage.getItem('profile'));
+        //this.userId = this.profile.user_id;
         this.groupsService.getGroups(this.userId).subscribe(function (groups) {
             _this.groups = groups;
             // sort the groups
             _this.groups.sort(function (a, b) { return new Date(b.date_created).getTime() - new Date(a.date_created).getTime(); });
         });
     }
-    NavComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'navigation',
-            templateUrl: 'nav.component.html'
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService])
-    ], NavComponent);
     return NavComponent;
 }());
+NavComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'navigation',
+        templateUrl: 'nav.component.html'
+    }),
+    __metadata("design:paramtypes", [auth_service_1.Auth, groups_service_1.GroupsService])
+], NavComponent);
 exports.NavComponent = NavComponent;
 //# sourceMappingURL=nav.component.js.map

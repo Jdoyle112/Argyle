@@ -8,15 +8,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../services/auth.service');
-var groups_service_1 = require('../../services/groups.service');
-var dialogues_service_1 = require('../../services/dialogues.service');
-var group_1 = require('../../models/group');
-var dialogue_1 = require('../../models/dialogue');
-var router_1 = require('@angular/router');
-var member_1 = require('../../models/member');
-var members_service_1 = require('../../services/members.service');
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../services/auth.service");
+var groups_service_1 = require("../../services/groups.service");
+var dialogues_service_1 = require("../../services/dialogues.service");
+var group_1 = require("../../models/group");
+var dialogue_1 = require("../../models/dialogue");
+var router_1 = require("@angular/router");
+var member_1 = require("../../models/member");
+var members_service_1 = require("../../services/members.service");
 var GroupComponent = (function () {
     function GroupComponent(auth, groupsService, route, dialoguesService, membersService) {
         this.auth = auth;
@@ -130,16 +130,16 @@ var GroupComponent = (function () {
         // set status to false
         this.sub.unsubscribe();
     };
-    GroupComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'group',
-            templateUrl: 'group.component.html',
-            providers: [group_1.Group, member_1.Member]
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, router_1.ActivatedRoute, dialogues_service_1.DialoguesService, members_service_1.MembersService])
-    ], GroupComponent);
     return GroupComponent;
 }());
+GroupComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'group',
+        templateUrl: 'group.component.html',
+        providers: [group_1.Group, member_1.Member]
+    }),
+    __metadata("design:paramtypes", [auth_service_1.Auth, groups_service_1.GroupsService, router_1.ActivatedRoute, dialogues_service_1.DialoguesService, members_service_1.MembersService])
+], GroupComponent);
 exports.GroupComponent = GroupComponent;
 //# sourceMappingURL=group.component.js.map

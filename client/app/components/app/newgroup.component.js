@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../services/auth.service');
-var groups_service_1 = require('../../services/groups.service');
-var members_service_1 = require('../../services/members.service');
-var group_1 = require('../../models/group');
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../services/auth.service");
+var groups_service_1 = require("../../services/groups.service");
+var members_service_1 = require("../../services/members.service");
+var group_1 = require("../../models/group");
 var NewGroupComponent = (function () {
     function NewGroupComponent(auth, groupsService, group, membersService) {
         var _this = this;
@@ -53,16 +53,16 @@ var NewGroupComponent = (function () {
             }
         });*/
     };
-    NewGroupComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'new-group',
-            templateUrl: 'newgroup.component.html',
-            providers: [group_1.Group]
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, group_1.Group, members_service_1.MembersService])
-    ], NewGroupComponent);
     return NewGroupComponent;
 }());
+NewGroupComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'new-group',
+        templateUrl: 'newgroup.component.html',
+        providers: [group_1.Group]
+    }),
+    __metadata("design:paramtypes", [auth_service_1.Auth, groups_service_1.GroupsService, group_1.Group, members_service_1.MembersService])
+], NewGroupComponent);
 exports.NewGroupComponent = NewGroupComponent;
 //# sourceMappingURL=newgroup.component.js.map

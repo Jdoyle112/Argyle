@@ -17,9 +17,12 @@ export class NavComponent {
 	profile: any; 
 
 	constructor(private auth: Auth, private groupsService: GroupsService){
-
-		this.profile = JSON.parse(localStorage.getItem('profile'));
-		this.userId = this.profile.user_id;
+		if(JSON.parse(localStorage.getItem('profile'))){
+			this.profile = JSON.parse(localStorage.getItem('profile'));
+			this.userId = this.profile.user_id;
+		}
+		//this.profile = JSON.parse(localStorage.getItem('profile'));
+		//this.userId = this.profile.user_id;
 		
 		this.groupsService.getGroups(this.userId).subscribe(groups => {
 			this.groups = groups;

@@ -17,6 +17,10 @@ var WinChan = (function() {
 
   // checking for IE8 or above
   function isInternetExplorer() {
+    if (typeof navigator === 'undefined') {
+      return false;
+    }
+
     var rv = -1; // Return value assumes failure.
     var ua = navigator.userAgent;
     if (navigator.appName === 'Microsoft Internet Explorer') {
@@ -49,7 +53,7 @@ var WinChan = (function() {
 
   // feature checking to see if this platform is supported at all
   function isSupported() {
-    return (window.JSON && window.JSON.stringify &&
+    return (typeof window !== 'undefined' && window.JSON && window.JSON.stringify &&
             window.JSON.parse && window.postMessage);
   }
 

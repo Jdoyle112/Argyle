@@ -8,22 +8,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../services/auth.service');
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../services/auth.service");
 var UserComponent = (function () {
     function UserComponent(auth) {
         this.auth = auth;
         this.profile = JSON.parse(localStorage.getItem('profile'));
     }
-    UserComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'user-profile',
-            templateUrl: 'user.component.html'
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth])
-    ], UserComponent);
     return UserComponent;
 }());
+UserComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'user-profile',
+        templateUrl: 'user.component.html'
+    }),
+    __metadata("design:paramtypes", [auth_service_1.Auth])
+], UserComponent);
 exports.UserComponent = UserComponent;
 //# sourceMappingURL=user.component.js.map

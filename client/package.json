@@ -1,5 +1,5 @@
 {
-  "name": "Argyle",
+  "name": "argyle",
   "version": "1.0.0",
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
@@ -11,29 +11,27 @@
   },
   "license": "ISC",
   "dependencies": {
-    "@angular/common": "~2.0.1",
-    "@angular/compiler": "~2.0.1",
-    "@angular/core": "~2.0.1",
-    "@angular/forms": "~2.0.1",
-    "@angular/http": "~2.0.1",
-    "@angular/platform-browser": "~2.0.1",
-    "@angular/platform-browser-dynamic": "~2.0.1",
-    "@angular/router": "~3.0.1",
-    "@angular/upgrade": "~2.0.1",
-    "angular-in-memory-web-api": "~0.1.1",
+    "@angular/common": "^2.3.0",
+    "@angular/compiler": "^2.3.0",
+    "@angular/core": "^2.3.0",
+    "@angular/forms": "~2.3.0",
+    "@angular/http": "~2.3.0",
+    "@angular/platform-browser": "^2.3.0",
+    "@angular/platform-browser-dynamic": "^2.3.0",
+    "@angular/router": "~3.3.0",
+    "angular-in-memory-web-api": "~0.1.17",
     "angular2-jwt": "^0.1.24",
     "aos": "^2.1.1",
     "auth0-lock": "^10.4.0",
     "bootstrap": "^4.0.0-alpha.5",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
-    "fuel-ui": "^0.3.9",
     "js-base64": "^2.1.9",
     "ng2-bs3-modal": "^0.10.4",
     "reflect-metadata": "^0.1.8",
-    "rxjs": "5.0.0-beta.12",
-    "systemjs": "0.19.39",
-    "zone.js": "^0.6.25"
+    "rxjs": "^5.0.0-rc.5",
+    "systemjs": "0.19.40",
+    "zone.js": "^0.6.26"
   },
   "devDependencies": {
     "concurrently": "^3.0.0",
@@ -47,6 +45,9 @@
     "gulp-uglify": "^2.0.0",
     "lite-server": "^2.2.2",
     "typescript": "^2.0.3",
-    "typings": "^1.4.0"
+    "typings": "^1.4.0",
+    "@types/node": "^6.0.46",
+    "@types/jasmine": "^2.5.36",
+    "@types/selenium-webdriver": "^2.53.33"
   }
 }
