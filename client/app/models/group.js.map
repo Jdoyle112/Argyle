@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"version":3,"file":"group.js","sourceRoot":"","sources":["group.ts"],"names":[],"mappings":";AAAA;IAAA;IAiBA,CAAC;IAAD,YAAC;AAAD,CAAC,AAjBD,IAiBC;AAjBY,sBAAK"}
-=======
-{"version":3,"file":"group.js","sourceRoot":"","sources":["group.ts"],"names":[],"mappings":";AAAA;IAAA;IAkBA,CAAC;IAAD,YAAC;AAAD,CAAC,AAlBD,IAkBC;AAlBY,aAAK,QAkBjB,CAAA"}
->>>>>>> origin/groups
+{"version":3,"file":"group.js","sourceRoot":"","sources":["group.ts"],"names":[],"mappings":";AAAA;IAAA;IAkBA,CAAC;IAAD,YAAC;AAAD,CAAC,AAlBD,IAkBC;AAlBY,sBAAK"}

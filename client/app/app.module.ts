@@ -17,6 +17,8 @@ import { FeaturesComponent } from './components/home/features.component';
 import { TestemonialsComponent } from './components/home/testemonials.component';
 import { HomeComponent } from './components/home/home.component';
 
+import { DialoguesComponent } from './components/app/dashboard/dialogues.component';
+import { DialogueComponent } from './components/app/dashboard/dialogue.component';
 import { NewGroupComponent } from './components/app/newgroup.component';
 import { GroupComponent } from './components/app/group.component';
 
@@ -34,11 +36,13 @@ import { MembersService } from './services/members.service';
 
 /* Models */
 import { Group } from './models/group';
+import { Dialogue } from './models/dialogue';
+import { Member } from './models/member';
 
 
 @NgModule({
   imports:      [ BrowserModule, routing, HttpModule, FormsModule, Ng2Bs3ModalModule ],
-  declarations: [ AppComponent, NavComponent, HeaderComponent, WhyUsComponent, HowItWorksComponent, FeaturesComponent, TestemonialsComponent, HomeComponent, UserComponent, NewGroupComponent, GroupComponent ],
+  declarations: [ AppComponent, NavComponent, HeaderComponent, WhyUsComponent, HowItWorksComponent, FeaturesComponent, TestemonialsComponent, HomeComponent, UserComponent, NewGroupComponent, GroupComponent, DialogueComponent, DialoguesComponent ],
   providers: [ appRoutingProviders, AUTH_PROVIDERS, Auth, GroupsService, AuthGuard, DialoguesService, MembersService, Group ],
   bootstrap:    [ AppComponent ]
 })

@@ -59,18 +59,6 @@ var NewGroupComponent = (function () {
             }
         });*/
     };
-<<<<<<< HEAD
-=======
-    NewGroupComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'new-group',
-            templateUrl: 'newgroup.component.html',
-            providers: [group_1.Group]
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService, members_service_1.MembersService])
-    ], NewGroupComponent);
->>>>>>> origin/groups
     return NewGroupComponent;
 }());
 NewGroupComponent = __decorate([
@@ -80,7 +68,7 @@ NewGroupComponent = __decorate([
         templateUrl: 'newgroup.component.html',
         providers: [group_1.Group]
     }),
-    __metadata("design:paramtypes", [auth_service_1.Auth, groups_service_1.GroupsService, group_1.Group, members_service_1.MembersService])
+    __metadata("design:paramtypes", [auth_service_1.Auth, groups_service_1.GroupsService, members_service_1.MembersService])
 ], NewGroupComponent);
 exports.NewGroupComponent = NewGroupComponent;
 //# sourceMappingURL=newgroup.component.js.map

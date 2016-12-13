@@ -8,11 +8,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../../services/auth.service');
-var dialogues_service_1 = require('../../../services/dialogues.service');
-var dialogue_1 = require('../../../models/dialogue');
-var group_1 = require('../../../models/group');
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../../services/auth.service");
+var dialogues_service_1 = require("../../../services/dialogues.service");
+var dialogue_1 = require("../../../models/dialogue");
+var group_1 = require("../../../models/group");
 var DialogueComponent = (function () {
     function DialogueComponent(auth, dialoguesService) {
         this.auth = auth;
@@ -57,24 +57,24 @@ var DialogueComponent = (function () {
         updDialogue.members.push(this.userId);
         this.dialoguesService.joinDialogue(id, updDialogue).subscribe();
     };
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], DialogueComponent.prototype, "groupId", void 0);
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Object)
-    ], DialogueComponent.prototype, "dialogueId", void 0);
-    DialogueComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'dialogue',
-            templateUrl: 'dialogue.component.html',
-            providers: [dialogue_1.Dialogue, group_1.Group]
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, dialogues_service_1.DialoguesService])
-    ], DialogueComponent);
     return DialogueComponent;
 }());
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], DialogueComponent.prototype, "groupId", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], DialogueComponent.prototype, "dialogueId", void 0);
+DialogueComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'dialogue',
+        templateUrl: 'dialogue.component.html',
+        providers: [dialogue_1.Dialogue, group_1.Group]
+    }),
+    __metadata("design:paramtypes", [auth_service_1.Auth, dialogues_service_1.DialoguesService])
+], DialogueComponent);
 exports.DialogueComponent = DialogueComponent;
 //# sourceMappingURL=dialogue.component.js.map

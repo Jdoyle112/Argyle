@@ -8,16 +8,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../services/auth.service');
-var groups_service_1 = require('../../services/groups.service');
-var dialogues_service_1 = require('../../services/dialogues.service');
-var group_1 = require('../../models/group');
-var router_1 = require('@angular/router');
-var member_1 = require('../../models/member');
-var members_service_1 = require('../../services/members.service');
-
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../services/auth.service");
+var groups_service_1 = require("../../services/groups.service");
+var dialogues_service_1 = require("../../services/dialogues.service");
+var group_1 = require("../../models/group");
+var router_1 = require("@angular/router");
+var member_1 = require("../../models/member");
+var members_service_1 = require("../../services/members.service");
 var GroupComponent = (function () {
     function GroupComponent(auth, groupsService, route, dialoguesService, membersService) {
         this.auth = auth;
