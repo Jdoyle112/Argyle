@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var WhyUsComponent = (function () {
     function WhyUsComponent() {
         this.blurbs = [
@@ -20,15 +20,15 @@ var WhyUsComponent = (function () {
             { head: "Secure Conversations", content: "Chat with the peace of mind that your messages are private and secure", icon: "fa-shield" }
         ];
     }
-    WhyUsComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'why_us-section',
-            templateUrl: 'why_us.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], WhyUsComponent);
     return WhyUsComponent;
 }());
+WhyUsComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'why_us-section',
+        templateUrl: 'why_us.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], WhyUsComponent);
 exports.WhyUsComponent = WhyUsComponent;
 //# sourceMappingURL=why_us.component.js.map

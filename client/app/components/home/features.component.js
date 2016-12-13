@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var FeaturesComponent = (function () {
     function FeaturesComponent() {
         this.blurbs = [
@@ -26,15 +26,15 @@ var FeaturesComponent = (function () {
             { title: "Integrations", body: "Argyle integrates with many of your favorite apps already such as Giphy, Twitter, Instagram, Facebook, and many more.", icon: "fa-exchange" }
         ];
     }
-    FeaturesComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'features',
-            templateUrl: 'features.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], FeaturesComponent);
     return FeaturesComponent;
 }());
+FeaturesComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'features',
+        templateUrl: 'features.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], FeaturesComponent);
 exports.FeaturesComponent = FeaturesComponent;
 //# sourceMappingURL=features.component.js.map

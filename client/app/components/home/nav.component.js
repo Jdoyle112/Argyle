@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var auth_service_1 = require('../../services/auth.service');
-var groups_service_1 = require('../../services/groups.service');
+var core_1 = require("@angular/core");
+var auth_service_1 = require("../../services/auth.service");
+var groups_service_1 = require("../../services/groups.service");
 var NavComponent = (function () {
     function NavComponent(auth, groupsService) {
         var _this = this;
@@ -30,15 +30,15 @@ var NavComponent = (function () {
             });
         }
     }
-    NavComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'navigation',
-            templateUrl: 'nav.component.html'
-        }), 
-        __metadata('design:paramtypes', [auth_service_1.Auth, groups_service_1.GroupsService])
-    ], NavComponent);
     return NavComponent;
 }());
+NavComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'navigation',
+        templateUrl: 'nav.component.html'
+    }),
+    __metadata("design:paramtypes", [auth_service_1.Auth, groups_service_1.GroupsService])
+], NavComponent);
 exports.NavComponent = NavComponent;
 //# sourceMappingURL=nav.component.js.map

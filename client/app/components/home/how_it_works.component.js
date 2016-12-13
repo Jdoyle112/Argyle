@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
+var core_1 = require("@angular/core");
 var HowItWorksComponent = (function () {
     function HowItWorksComponent() {
         this.blurbs = [
@@ -17,15 +17,15 @@ var HowItWorksComponent = (function () {
             { title: "Use our Features", description: "Argyle comes loaded with tons of group focused features. Scroll down to learn more!", icon: "fa-bolt" }
         ];
     }
-    HowItWorksComponent = __decorate([
-        core_1.Component({
-            moduleId: module.id,
-            selector: 'how_it_works',
-            templateUrl: 'how_it_works.component.html'
-        }), 
-        __metadata('design:paramtypes', [])
-    ], HowItWorksComponent);
     return HowItWorksComponent;
 }());
+HowItWorksComponent = __decorate([
+    core_1.Component({
+        moduleId: module.id,
+        selector: 'how_it_works',
+        templateUrl: 'how_it_works.component.html'
+    }),
+    __metadata("design:paramtypes", [])
+], HowItWorksComponent);
 exports.HowItWorksComponent = HowItWorksComponent;
 //# sourceMappingURL=how_it_works.component.js.map
