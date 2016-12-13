@@ -14,7 +14,6 @@ require("rxjs/add/operator/map");
 var DialoguesService = (function () {
     function DialoguesService(http) {
         this.http = http;
-        console.log('task service init..');
     }
     DialoguesService.prototype.getDialogues = function (id) {
         return this.http.get('/api/dialogues/' + id)

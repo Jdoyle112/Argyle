@@ -16,16 +16,20 @@ var http_1 = require("@angular/http");
 var forms_1 = require("@angular/forms");
 var ng2_bs3_modal_1 = require("ng2-bs3-modal/ng2-bs3-modal");
 /* components */
-var nav_component_1 = require("./components/home/nav.component");
-var header_component_1 = require("./components/home/header.component");
-var why_us_component_1 = require("./components/home/why_us.component");
-var how_it_works_component_1 = require("./components/home/how_it_works.component");
-var features_component_1 = require("./components/home/features.component");
-var testemonials_component_1 = require("./components/home/testemonials.component");
-var home_component_1 = require("./components/home/home.component");
-var newgroup_component_1 = require("./components/app/newgroup.component");
-var group_component_1 = require("./components/app/group.component");
-var user_component_1 = require("./components/user/user.component");
+
+var nav_component_1 = require('./components/home/nav.component');
+var header_component_1 = require('./components/home/header.component');
+var why_us_component_1 = require('./components/home/why_us.component');
+var how_it_works_component_1 = require('./components/home/how_it_works.component');
+var features_component_1 = require('./components/home/features.component');
+var testemonials_component_1 = require('./components/home/testemonials.component');
+var home_component_1 = require('./components/home/home.component');
+var newgroup_component_1 = require('./components/app/newgroup.component');
+var group_component_1 = require('./components/app/group.component');
+var dialogues_component_1 = require('./components/app/dashboard/dialogues.component');
+var dialogue_component_1 = require('./components/app/dashboard/dialogue.component');
+var user_component_1 = require('./components/user/user.component');
+
 /* auth0 */
 var angular2_jwt_1 = require("angular2-jwt");
 var auth_guard_1 = require("./auth.guard");
@@ -39,8 +43,7 @@ var group_1 = require("./models/group");
 var AppModule = (function () {
     function AppModule() {
     }
-    return AppModule;
-}());
+
 AppModule = __decorate([
     core_1.NgModule({
         imports: [platform_browser_1.BrowserModule, app_routing_1.routing, http_1.HttpModule, forms_1.FormsModule, ng2_bs3_modal_1.Ng2Bs3ModalModule],

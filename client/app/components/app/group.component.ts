@@ -8,6 +8,8 @@ import { ActivatedRoute }     from '@angular/router';
 import { Member } from '../../models/member';
 import { MembersService } from '../../services/members.service';
 
+import { DialoguesComponent } from './dashboard/dialogues.component';
+import { DialogueComponent } from './dashboard/dialogue.component';
 
 @Component({
 	moduleId: module.id,
@@ -17,8 +19,8 @@ import { MembersService } from '../../services/members.service';
 })
 
 export class GroupComponent implements OnInit {
-	public group: any;
-	groupId: string;
+	group: Group = new Group();
+	groupId: any;
 	dialogues: Dialogue[];
 	dialogue: any;
 	id: number;
@@ -37,6 +39,7 @@ export class GroupComponent implements OnInit {
 	isJoined: boolean;
 	onlineUsers: string[]; 
 	groupMembers: Array<string>;
+	dialogueId: any;
 
 	constructor(private auth: Auth, private groupsService: GroupsService, private route: ActivatedRoute, private dialoguesService: DialoguesService, private membersService: MembersService){
 
@@ -44,7 +47,7 @@ export class GroupComponent implements OnInit {
 		this.userEmail = this.profile.email;
 		this.username = this.profile.nickname;
 		this.userId = this.profile.user_id;
-		console.log(this.userId);
+
 	}	
 
 	addInput(event){
@@ -57,8 +60,6 @@ export class GroupComponent implements OnInit {
 	       this.id = params['id']; 
 	       this.urlPath = this.route.snapshot.url[0].path;
 
-		   	// get the group
-
 				
 				// set online status
 				/*var updGroup = this.group;
@@ -70,55 +71,20 @@ export class GroupComponent implements OnInit {
 		  		});	  */			
 	    });
 		
-		this.groupsService.getGroup(this.id).subscribe(group => {
-			this.group = group;	
-			this.name = group.name;
-			this.groupMembers = group.users;
+		this.groupsService.getGroup(this.id).subscribe(data => {
+			this.group._id = data._id;
+			this.group.name = data.name;
+			this.group.admin = data.admin;
+			this.group.date_created = data.date_created;
+			this.group.users = data.users;
+			
+			this.groupMembers = data.users;
 			
 			// get members
 			for(let id of this.groupMembers){
 				this.membersService.getMembers(id).subscribe(member => {
 					this.groupMembers.push(member);
 				});
-			}
-		});
-
-	    // get all dialogues for sidebar
-		this.dialoguesService.getDialogues(this.id).subscribe(dialogues => {
-		    	this.dialogues = dialogues;
-	  	  	});
-	}
-
-	addDialogue(event){
-		event.preventDefault();
-
-		let dialogue = new Dialogue();
-		dialogue.name = this.dialogueName;
-		dialogue.admin = this.userId;
-		dialogue.members = [this.userId];
-		dialogue.groupId = this.id;
-		dialogue.public = true;
-
-		this.dialoguesService.addDialogue(dialogue)	
-			.subscribe(dialogue => {
-				this.dialogues.push(dialogue);
-				this.dialogueName = '';
-			});
-	}
-
-	getDialogue(event, dialogueId){
-		event.preventDefault();
-		this.dialoguesService.getDialogue(dialogueId).subscribe(dialogue => {
-			this.dialogue = dialogue;
-			this.dialogueName = dialogue.name;
-			for(let member of dialogue.members){
-				if(member == this.userId){
-					// hide join btn
-					this.isJoined = true;
-				} else {
-					// display join button
-					this.isJoined = false;
-				}
 			}
 		});
 	}
@@ -138,20 +104,6 @@ export class GroupComponent implements OnInit {
 			});
 	}
 
-	joinDialogue(event, id){
-		event.preventDefault();
-
-		var updDialogue = {
-			_id: this.dialogue._id,
-			admin: this.dialogue.admin,
-			name: this.dialogue.name,
-			members: this.dialogue.members
-		}
-		updDialogue.members.push(this.userId);
-		this.dialoguesService.joinDialogue(id, updDialogue).subscribe(
-
-		);
-	}
 
 	ngOnDestroy(){
 		// set status to false

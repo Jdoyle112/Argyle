@@ -13,13 +13,14 @@ import { Group } from '../../models/group';
 })
 
 export class NewGroupComponent {
+	group: any;
 	groups: Group[];
 	name: string;
 	profile: any;
 	username: string;
 	userId: string;
 	
-	constructor(private auth: Auth, private groupsService: GroupsService, private group: Group, private membersService: MembersService){
+	constructor(private auth: Auth, private groupsService: GroupsService, private membersService: MembersService){
 		this.profile = JSON.parse(localStorage.getItem('profile'));
 		this.userId = this.profile.user_id;
 
@@ -32,6 +33,13 @@ export class NewGroupComponent {
 
 	addGroup(event){
 		event.preventDefault();
+		/*var data = {
+			name: this.name,
+			userId: this.userId,
+			date_created: new Date(),
+		}
+
+		console.log(this.group.create(data));*/
 		let group = new Group();
 		group.name = this.name;
 		group.admin = this.userId;

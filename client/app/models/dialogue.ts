@@ -1,8 +1,9 @@
 export class Dialogue {
+	_id: any;
 	name: string;
-	admin: string;
+	admin: any;
 	date_created: string;
-	members: Array<string>;
+	members: Array<any>;
 	groupId: number;
 	public: boolean;
 }

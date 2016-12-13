@@ -17,6 +17,7 @@ var NavComponent = (function () {
         this.auth = auth;
         this.groupsService = groupsService;
         this.links = ["Home", "Learn More", "Contact Us"];
+<<<<<<< HEAD
         if (JSON.parse(localStorage.getItem('profile'))) {
             this.profile = JSON.parse(localStorage.getItem('profile'));
             this.userId = this.profile.user_id;
@@ -28,6 +29,20 @@ var NavComponent = (function () {
             // sort the groups
             _this.groups.sort(function (a, b) { return new Date(b.date_created).getTime() - new Date(a.date_created).getTime(); });
         });
+=======
+        this.profile = JSON.parse(localStorage.getItem('profile'));
+        if (this.profile) {
+            this.userId = this.profile.user_id;
+        }
+        if (this.userId) {
+            this.groupsService.getGroups(this.userId).subscribe(function (groups) {
+                _this.groups = groups;
+                _this.groupId = groups._id;
+                // sort the groups
+                _this.groups.sort(function (a, b) { return new Date(b.date_created).getTime() - new Date(a.date_created).getTime(); });
+            });
+        }
+>>>>>>> origin/groups
     }
     return NavComponent;
 }());

@@ -15,20 +15,31 @@ export class NavComponent {
 	isClassVisible: false;
 	userId: string;
 	profile: any; 
+	groupId: number;
 
 	constructor(private auth: Auth, private groupsService: GroupsService){
+<<<<<<< HEAD
 		if(JSON.parse(localStorage.getItem('profile'))){
 			this.profile = JSON.parse(localStorage.getItem('profile'));
 			this.userId = this.profile.user_id;
 		}
 		//this.profile = JSON.parse(localStorage.getItem('profile'));
 		//this.userId = this.profile.user_id;
-		
-		this.groupsService.getGroups(this.userId).subscribe(groups => {
-			this.groups = groups;
+=======
 
-			// sort the groups
-			this.groups.sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime());
-		});
+		this.profile = JSON.parse(localStorage.getItem('profile'));
+		if(this.profile){
+			this.userId = this.profile.user_id;
+		}
+>>>>>>> origin/groups
+		
+		if(this.userId){
+			this.groupsService.getGroups(this.userId).subscribe(groups => {
+				this.groups = groups;
+				this.groupId = groups._id;
+				// sort the groups
+				this.groups.sort((a, b) => new Date(b.date_created).getTime() - new Date(a.date_created).getTime());
+			});
+		}
 	}
 }

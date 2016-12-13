@@ -8,15 +8,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var auth_service_1 = require("../../services/auth.service");
-var groups_service_1 = require("../../services/groups.service");
-var dialogues_service_1 = require("../../services/dialogues.service");
-var group_1 = require("../../models/group");
-var dialogue_1 = require("../../models/dialogue");
-var router_1 = require("@angular/router");
-var member_1 = require("../../models/member");
-var members_service_1 = require("../../services/members.service");
+
+var core_1 = require('@angular/core');
+var auth_service_1 = require('../../services/auth.service');
+var groups_service_1 = require('../../services/groups.service');
+var dialogues_service_1 = require('../../services/dialogues.service');
+var group_1 = require('../../models/group');
+var router_1 = require('@angular/router');
+var member_1 = require('../../models/member');
+var members_service_1 = require('../../services/members.service');
+
 var GroupComponent = (function () {
     function GroupComponent(auth, groupsService, route, dialoguesService, membersService) {
         this.auth = auth;
@@ -24,13 +25,13 @@ var GroupComponent = (function () {
         this.route = route;
         this.dialoguesService = dialoguesService;
         this.membersService = membersService;
+        this.group = new group_1.Group();
         this.inputs = [1];
         this.members = []; // 2 things named member, could be issue
         this.profile = JSON.parse(localStorage.getItem('profile'));
         this.userEmail = this.profile.email;
         this.username = this.profile.nickname;
         this.userId = this.profile.user_id;
-        console.log(this.userId);
     }
     GroupComponent.prototype.addInput = function (event) {
         event.preventDefault();
@@ -41,7 +42,6 @@ var GroupComponent = (function () {
         this.sub = this.route.params.subscribe(function (params) {
             _this.id = params['id'];
             _this.urlPath = _this.route.snapshot.url[0].path;
-            // get the group
             // set online status
             /*var updGroup = this.group;
             updGroup.onlineUsers.push(this.userId);
@@ -51,54 +51,19 @@ var GroupComponent = (function () {
                 
             });	  */
         });
-        this.groupsService.getGroup(this.id).subscribe(function (group) {
-            _this.group = group;
-            _this.name = group.name;
-            _this.groupMembers = group.users;
+        this.groupsService.getGroup(this.id).subscribe(function (data) {
+            _this.group._id = data._id;
+            _this.group.name = data.name;
+            _this.group.admin = data.admin;
+            _this.group.date_created = data.date_created;
+            _this.group.users = data.users;
+            _this.groupMembers = data.users;
             // get members
             for (var _i = 0, _a = _this.groupMembers; _i < _a.length; _i++) {
                 var id = _a[_i];
                 _this.membersService.getMembers(id).subscribe(function (member) {
                     _this.groupMembers.push(member);
                 });
-            }
-        });
-        // get all dialogues for sidebar
-        this.dialoguesService.getDialogues(this.id).subscribe(function (dialogues) {
-            _this.dialogues = dialogues;
-        });
-    };
-    GroupComponent.prototype.addDialogue = function (event) {
-        var _this = this;
-        event.preventDefault();
-        var dialogue = new dialogue_1.Dialogue();
-        dialogue.name = this.dialogueName;
-        dialogue.admin = this.userId;
-        dialogue.members = [this.userId];
-        dialogue.groupId = this.id;
-        dialogue.public = true;
-        this.dialoguesService.addDialogue(dialogue)
-            .subscribe(function (dialogue) {
-            _this.dialogues.push(dialogue);
-            _this.dialogueName = '';
-        });
-    };
-    GroupComponent.prototype.getDialogue = function (event, dialogueId) {
-        var _this = this;
-        event.preventDefault();
-        this.dialoguesService.getDialogue(dialogueId).subscribe(function (dialogue) {
-            _this.dialogue = dialogue;
-            _this.dialogueName = dialogue.name;
-            for (var _i = 0, _a = dialogue.members; _i < _a.length; _i++) {
-                var member = _a[_i];
-                if (member == _this.userId) {
-                    // hide join btn
-                    _this.isJoined = true;
-                }
-                else {
-                    // display join button
-                    _this.isJoined = false;
-                }
             }
         });
     };
@@ -114,17 +79,6 @@ var GroupComponent = (function () {
             _this.members.push(member);
             _this.memberEmail = '';
         });
-    };
-    GroupComponent.prototype.joinDialogue = function (event, id) {
-        event.preventDefault();
-        var updDialogue = {
-            _id: this.dialogue._id,
-            admin: this.dialogue.admin,
-            name: this.dialogue.name,
-            members: this.dialogue.members
-        };
-        updDialogue.members.push(this.userId);
-        this.dialoguesService.joinDialogue(id, updDialogue).subscribe();
     };
     GroupComponent.prototype.ngOnDestroy = function () {
         // set status to false
