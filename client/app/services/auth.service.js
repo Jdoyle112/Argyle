@@ -10,20 +10,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var angular2_jwt_1 = require("angular2-jwt");
+var router_1 = require("@angular/router");
 var Auth = (function () {
-    function Auth() {
+    function Auth(router) {
         var _this = this;
+        this.router = router;
         // Configure Auth0
         this.lock = new Auth0Lock('fWLIc6gHhVx9cNzyzJ3DZc2VpDyXSYF5', 'jdoyle112.auth0.com', {});
         // Add callback for lock `authenticated` event
+        this.user = JSON.parse(localStorage.getItem('profile'));
         this.lock.on("authenticated", function (authResult) {
+            localStorage.setItem('id_token', authResult.idToken);
             _this.lock.getProfile(authResult.idToken, function (error, profile) {
-                if (error) {
-                    throw new Error(error);
-                }
-                localStorage.setItem('id_token', authResult.idToken);
+                console.log('profile');
+                /* if(error){
+                   alert(error);
+                   return;
+                 }*/
                 localStorage.setItem('profile', JSON.stringify(profile));
+                console.log(profile);
+                this.user = profile;
             });
+            //this.router.navigate(['/profile']);
         });
     }
     Auth.prototype.login = function () {
@@ -41,13 +49,14 @@ var Auth = (function () {
         // Remove token from localStorage
         localStorage.removeItem('id_token');
         localStorage.removeItem('profile');
+        this.user = undefined;
     };
     ;
     return Auth;
 }());
 Auth = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [router_1.Router])
 ], Auth);
 exports.Auth = Auth;
 //# sourceMappingURL=auth.service.js.map

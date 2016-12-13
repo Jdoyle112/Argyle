@@ -17,17 +17,17 @@ var NavComponent = (function () {
         this.auth = auth;
         this.groupsService = groupsService;
         this.links = ["Home", "Learn More", "Contact Us"];
-        if (JSON.parse(localStorage.getItem('profile'))) {
-            this.profile = JSON.parse(localStorage.getItem('profile'));
-            this.userId = this.profile.user_id;
-        }
-        //this.profile = JSON.parse(localStorage.getItem('profile'));
-        //this.userId = this.profile.user_id;
+        this.user = auth.user;
+        this.userId = auth.user.user_id;
+        console.log(JSON.parse(localStorage.getItem('profile')));
+        console.log(auth.user);
         this.groupsService.getGroups(this.userId).subscribe(function (groups) {
             _this.groups = groups;
             // sort the groups
             _this.groups.sort(function (a, b) { return new Date(b.date_created).getTime() - new Date(a.date_created).getTime(); });
         });
+        console.log(JSON.parse(localStorage.getItem('profile')));
+        console.log(auth.user);
     }
     return NavComponent;
 }());
